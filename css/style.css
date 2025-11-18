@@ -1,19 +1,45 @@
-*
-{
-    margin: 0;
-    padding: 0;
+/* ========== Design Tokens ========== */
+:root {
+    /* Colors */
+    --color-text: #D4D4D4;
+    --color-bg: #000000;
+    --color-bg-contrast: #1E1E1E;
+    --accent-1: #569CD6; /* blue */
+    --accent-2: #9CDCFE; /* cyan */
+    --accent-3: #CE9178; /* salmon */
+
+    /* Layout */
+    --header-height: 80px;
+    --container-padding: 20px;
+
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-sm: 12px;
+    --font-size-md: 13px;
+    /* Icon Sizes */
+    --icon-size: 32px;
+    --icon-size-mobile: 36px;
 }
 
-body
-{
+/* ========== Base Reset ========== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+*::before, *::after { box-sizing: inherit; }
+
+/* ========== Page Base ========== */
+body {
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/background.jpg);
-    background-size: auto;
+    background-size: cover;
     background-position: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #D4D4D4;
+    font-family: var(--font-family);
+    color: var(--color-text);
 }
 
-/* -------Start header---------- */
+/* ========== Layout: Sticky Footer ========== */
+html, body { height: 100%; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+.footer-area { margin-top: auto; }
+
+/* ========== Header ========== */
 header
 {
     margin: 10px;
@@ -26,22 +52,24 @@ a
 
 .nav-var
 {
-   height: 80px;
+    height: var(--header-height);
 }
 
 .logo_header
 {
     margin: 10px 50px;
-    height: 80px;
+    height: var(--header-height);
+    transition: transform 200ms ease;
 
 }
 
 .logo_header:hover
 {
-    background-color:black ;
+    transform: scale(1.06);
 
 }
 
+/* ========== Navigation ========== */
 .menu
 {
     float: right;
@@ -57,35 +85,62 @@ a
 
 .menu li a
 {
-    color: #D4D4D4;
+    color: var(--color-text);
     padding: 5px 10px;
     font-weight: bold;
     letter-spacing: 2px; 
 }
 
+/* Social links (GitHub, LinkedIn) */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    transition: filter 160ms ease, transform 160ms ease;
+}
+.social-link .icon { 
+    width: var(--icon-size); 
+    height: var(--icon-size);
+    /* Default: light gray */
+    filter: brightness(0) saturate(100%) invert(84%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(96%) contrast(88%);
+    transition: filter 160ms ease;
+}
+/* GitHub hover: blue accent-1 #569CD6 */
+.social-link.github:hover { transform: scale(1.08); }
+.social-link.github:hover .icon { 
+    filter: brightness(0) saturate(100%) invert(64%) sepia(34%) saturate(839%) hue-rotate(179deg) brightness(92%) contrast(87%);
+}
+/* LinkedIn hover: cyan accent-2 #9CDCFE */
+.social-link.linkedin:hover { transform: scale(1.08); }
+.social-link.linkedin:hover .icon { 
+    filter: brightness(0) saturate(100%) invert(82%) sepia(17%) saturate(1084%) hue-rotate(162deg) brightness(103%) contrast(98%);
+}
+
+
 .Home:hover
 {
-    background-color: #569CD6 ;
-    color: #1E1E1E;
+    background-color: var(--accent-1);
+    color: var(--color-bg-contrast);
     font-weight: bold;
 }
 
 .Blog:hover
 {
-    background-color: #9CDCFE ;
-    color: #1E1E1E;
+    background-color: var(--accent-2);
+    color: var(--color-bg-contrast);
 }
 
 .Portfolio:hover
 {
-    background-color: #CE9178 ;
-    color: #1E1E1E;  
+    background-color: var(--accent-3);
+    color: var(--color-bg-contrast);  
 }
 
 .Contact:hover
 {
-    background-color: #D4D4D4 ;
-    color: #1E1E1E;
+    background-color: var(--color-text);
+    color: var(--color-bg-contrast);
 }
 
 span
@@ -96,23 +151,21 @@ span
 
 .color1
 {
-    color: #569CD6 ;
+    color: var(--accent-1);
     
 }
 
 .color2
 {
-    color: #9CDCFE ;
+    color: var(--accent-2);
 }
 
 .color3
 {
-    color: #CE9178 ;
+    color: var(--accent-3);
 }
 
-/* -------Finish header---------- */
-
-/* -------Start Content---------- */
+/* ========== Logo & Banner ========== */
 
 .logo
 {
@@ -122,6 +175,7 @@ span
 
 }
 
+/* ========== SVG Animation ========== */
 .forma
 {
     fill:none;
@@ -133,127 +187,121 @@ span
 
 .forma1
 {
-    
-    stroke:#569cd6;
+    stroke: var(--accent-1);
     stroke-dasharray: 100;
-    animation: forma1 5s linear forwards;
+    animation: forma1 13s linear infinite;
 }
 @keyframes forma1
 {
-    0%
-    {
-        stroke-dashoffset: 100;
-        fill: none;
-    }
-    100%
-    {
-        stroke-dashoffset: 0;
-        fill:#569cd6; 
-    }
+    0% { stroke-dashoffset: 100; fill: none; }
+    38.5% { stroke-dashoffset: 0; fill: var(--accent-1); }
+    100% { stroke-dashoffset: 0; fill: var(--accent-1); }
 }
 .forma2
 {
-    stroke:#569cd6;
+    stroke: var(--accent-1);
     stroke-dasharray: 100;
-    animation: forma2 5s linear forwards;
+    animation: forma2 13s linear infinite;
 }
 @keyframes forma2
 {
-    0%
-    {
-        stroke-dashoffset: 100;
-        fill: none;
-    }
-    100%
-    {
-        stroke-dashoffset: 0;
-        fill:#569cd6; 
-    }
+    0% { stroke-dashoffset: 100; fill: none; }
+    38.5% { stroke-dashoffset: 0; fill: var(--accent-1); }
+    100% { stroke-dashoffset: 0; fill: var(--accent-1); }
 }
 .forma3
 {
-    stroke:#9CDCFE;
+    stroke: var(--accent-2);
     stroke-dasharray: 300;
-    animation: forma3 6s linear forwards;
+    animation: forma3 13s linear infinite;
  }
 @keyframes forma3
 {
-    0%
-    {
-        stroke-dashoffset: 300;
-        fill: none;
-    }
-    100%
-    {
-        stroke-dashoffset: 0;
-        fill:#9CDCFE; 
-    }
+    0% { stroke-dashoffset: 300; fill: none; }
+    46.2% { stroke-dashoffset: 0; fill: var(--accent-2); }
+    100% { stroke-dashoffset: 0; fill: var(--accent-2); }
 }
 
 .forma4
 {
-    stroke:#CE9178;
+    stroke: var(--accent-3);
     stroke-dasharray: 300;
-    animation: forma4 7s linear forwards;
+    animation: forma4 13s linear infinite;
 }
 @keyframes forma4
 {
-    0%
-    {
-        stroke-dashoffset: 300;
-        fill: none;
-    }
-    100%
-    {
-        stroke-dashoffset: 0;
-        fill:#CE9178; 
-    }
+    0% { stroke-dashoffset: 300; fill: none; }
+    53.8% { stroke-dashoffset: 0; fill: var(--accent-3); }
+    100% { stroke-dashoffset: 0; fill: var(--accent-3); }
 }
 
 .forma5
 {
-    stroke:#CE9178;
+    stroke: var(--accent-3);
     stroke-dasharray: 200;
-    animation: forma5 8s linear forwards;
+    animation: forma5 13s linear infinite;
 }
 @keyframes forma5
 {
-    0%
-    {
-        stroke-dashoffset: 200;
-        fill: none;
-    }
-    100%
-    {
-        stroke-dashoffset: 0;
-        fill:#CE9178; 
-    }
+    0% { stroke-dashoffset: 200; fill: none; }
+    61.5% { stroke-dashoffset: 0; fill: var(--accent-3); }
+    100% { stroke-dashoffset: 0; fill: var(--accent-3); }
 }
 
 .message
 {
-    /* position: relative; */
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #D4D4D4;
+    font-family: var(--font-family);
+    color: var(--color-text);
     top: 100px;
+        font-size: 40px;
 }
-/* -------Finish Content---------- */
-/* -------Start Footer---------- */
+.message h1 {
+    font-size: clamp(22px, 4.2vw, 36px);
+    line-height: 1.2;
+    margin: 8px 0 0;
+    font-weight: 700;
+}
+
+/* ========== Footer ========== */
 .copy
 {
     text-decoration: none;
-    color: #D4D4D4;
-    margin: 10px;
-    padding: 5px 10px;
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
     text-align: center;
-    font-size: 12px;
-    letter-spacing: 1px;
+    font-size: var(--font-size-md);
+    letter-spacing: 0.5px;
+    line-height: 1.6;
 }
 .copy span
 {
     font-size: 1.1em;
 }
-/* -------Finish Footer---------- */
+ 
+/* Footer container styling */
+.footer-area {
+    background: rgba(0, 0, 0, 0.55);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: saturate(140%) blur(2px);
+    backdrop-filter: saturate(140%) blur(2px);
+}
+
+@media (max-width: 480px) {
+    .footer-area { padding: 12px 16px; }
+    .copy { font-size: var(--font-size-sm); }
+    /* Mobile menu adjustments */
+    .menu { float: none; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+    .menu li { margin: 4px; }
+    .social-link { padding: 10px 14px; }
+    .social-link .icon { width: var(--icon-size-mobile); height: var(--icon-size-mobile); }
+}
+
 
 

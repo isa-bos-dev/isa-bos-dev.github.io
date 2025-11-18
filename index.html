@@ -5,36 +5,40 @@
     <title>My Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/FAVICOM 32X32.svg" type="image/svg">
+    <link rel="icon" href="images/favicon32X32.svg" type="image/svg">
 </head>
 <body>
 
-<!--  ======================= Start Header Area ============================== -->
    <header>
       <div class="nav-var">
          
-         <a href="index.html"><img src="images/LOGO BANNER 175X60.svg" class="logo_header"></a>
+         <a href="index.html"><img src="images/logo_banner_175X60.svg" class="logo_header"></a>
 
-      <ul class="menu">
-         <li><a href="index.html" class="Home"><span class="current">Home</span></a></li>
-         <li><a href="#" class="Blog">About</a></li>
-         <li><a href="#" class="Portfolio">Portfolio</a></li>
-         <li><a href="#" class="Contact">Contact</a></li>
-      </ul>
+         <ul class="menu">
+             <li>
+                <a href="https://github.com/isa-bos-dev" class="social-link github" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+                   <img src="images/icon-github.svg" class="icon" alt="GitHub" aria-hidden="true">
+                </a>
+             </li>
+             <li>
+                <a href="https://www.linkedin.com/in/isabel-bosquet-dev" class="social-link linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                   <img src="images/icon-linkedin.svg" class="icon" alt="LinkedIn" aria-hidden="true">
+                </a>
+             </li>
+             <!-- Future menu items preserved
+             <li><a href="index.html" class="Home"><span class="current">Home</span></a></li>
+             <li><a href="#" class="Blog">About</a></li>
+             <li><a href="#" class="Portfolio">Portfolio</a></li>
+             -->
+         </ul>
       </div> 
 
    </header>
-
-   <!--  ======================= End Header Area ============================== -->
-
-   <!--  ======================= Start Main Area ================================ -->
-
-    <!--  ======================= Start Banner Area =======================  -->
          
     <div class="logo">
 
       <div class="message">
-         <h1><span class="color1">W</span>elcome to my <span class="color2">P</span>ortfolio <span class="color3">O</span>nline</h1>
+         <h1><span class="color1">W</span>elcome to my <br><span class="color2">P</span>ersonal <span class="color3">P</span>age</h1>
       </div>
       
       <svg
@@ -78,26 +82,19 @@
       </svg>
       
    </div>
-   <!--  ======================= End Banner Area =======================  -->
-   <!--  ========================= About Area ==========================  -->
-   <!--  ========================= End About Area ==========================  -->
-
-   <!--  ======================== Project Area ==============================  -->
-   <!--  ======================== End Project Area ==============================  -->
-
-   <!--  ======================== Contact Area ==============================  -->
-   <!--  ======================== End Contact Area ==============================  -->
-   <!--  ======================= End Main Area ================================ -->
-   
-   <!--  ======================== Footer Area ==============================  -->
 
    <footer class="footer-area">
 
    <div>
-   <p class="copy">Copyright ©2020 All rights reserved | Design by <span class="color1">&#59;</span>sa<span class="color2">&#125;</span>os<span class="color3">&#47;&#62;</span>ev</p>
+    <p class="copy">Copyright ©<span id="year"></span> All rights reserved | Design by <span class="color1">&#59;</span>sa<span class="color2">&#125;</span>os<span class="color3">&#47;&#62;</span>ev</p>
    </div>
-  </footer>
-   <!--  ======================== End Footer Area ==============================  -->
+   </footer>
+   <script>
+      (function(){
+         var y = document.getElementById('year');
+         if (y) { y.textContent = new Date().getFullYear(); }
+      })();
+   </script>
 
 </body>
 </html>
